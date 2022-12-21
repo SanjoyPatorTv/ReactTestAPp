@@ -8,6 +8,7 @@ function App() {
     <div className="App">
       <div>
         Hi, This is react sample app for test
+        Workflow Added init
       </div>
     </div>
   )
