@@ -30,7 +30,7 @@ jobs:
 
       - name: transfer file using ssh
         uses: easingthemes/ssh-deploy@v3.0.1
-        env:
+        with:
           SSH_PRIVATE_KEY: ${{ secrets.AWS_MOTOR_PRIVATE }}
           ARGS: "-rltDzvO"
           SOURCE: "build"
