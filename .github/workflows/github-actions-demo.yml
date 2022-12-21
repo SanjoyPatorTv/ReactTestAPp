@@ -23,33 +23,33 @@ jobs:
       - name: removing prev build directory from server
         uses: fifsky/ssh-action@v0.0.6
         with:
-          command: mkdir testcicd
+          command: rm -rf build
           host: 13.127.183.100
           user: ubuntu
           key: ${{ secrets.AWS_MOTOR_PRIVATE }}
 
-      # - name: transfer file using ssh
-      #   uses: easingthemes/ssh-deploy@v2
-      #   env:
-      #     SSH_PRIVATE_KEY: ${{ secrets.AWS_MOTOR_PRIVATE }}
-      #     ARGS: "-rltDzvO"
-      #     SOURCE: "build"
-      #     REMOTE_HOST: 13.127.183.100
-      #     REMOTE_USER: ubuntu
-      #     TARGET: /home/ubuntu/
-      #     EXCLUDE: "README.md, .gitignore, .github"
+      - name: transfer file using ssh
+        uses: easingthemes/ssh-deploy@v2
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.AWS_MOTOR_PRIVATE }}
+          ARGS: "-rltDzvO"
+          SOURCE: "build"
+          REMOTE_HOST: 13.127.183.100
+          REMOTE_USER: ubuntu
+          TARGET: /home/ubuntu/
+          EXCLUDE: "README.md, .gitignore, .github"
 
-      # - name: updating directories in the server
-      #   uses: fifsky/ssh-action@v0.0.6
-      #   with:
-      #     command: |
-      #       rm -rf frontend_old
-      #       mv frontend frontend_old
-      #       mv build frontend
-      #       mkdir build
-      #     host: 13.127.183.100
-      #     user: ubuntu
-      #     key: ${{ secrets.AWS_MOTOR_PRIVATE }}
+      - name: updating directories in the server
+        uses: fifsky/ssh-action@v0.0.6
+        with:
+          command: |
+            rm -rf frontend_old
+            mv frontend frontend_old
+            mv build frontend
+            mkdir build
+          host: 13.127.183.100
+          user: ubuntu
+          key: ${{ secrets.AWS_MOTOR_PRIVATE }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
       
 
