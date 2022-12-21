@@ -5,7 +5,7 @@ on:
     branches:
       - master
   pull_request:
-    branches: -master
+    branches: - master
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -28,6 +28,7 @@ jobs:
         run: |
           cat src/App.jsx
       - name: installing and running app
+        uses: actions/checkout@v3
       - run: npm install
       - run: npm run build
       - run: echo "🍏 This job's status is ${{ job.status }}."
