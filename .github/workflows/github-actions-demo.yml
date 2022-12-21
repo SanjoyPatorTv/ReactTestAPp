@@ -20,4 +20,7 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+      - name: reading the App.jsx file
+        run: |
+          cat src/App.jsx
       - run: echo "🍏 This job's status is ${{ job.status }}."

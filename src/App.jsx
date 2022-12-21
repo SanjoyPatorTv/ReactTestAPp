@@ -3,6 +3,7 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  console.log("react app running - consoled")
 
   return (
     <div className="App">
