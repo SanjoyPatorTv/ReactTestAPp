@@ -33,7 +33,7 @@ jobs:
         with:
           SSH_PRIVATE_KEY: ${{ secrets.AWS_MOTOR_PRIVATE }}
           ARGS: "-rltDzvO"
-          SOURCE: "build"
+          SOURCE: "${{ github.workspace }}/build"
           REMOTE_HOST: 13.127.183.100
           REMOTE_USER: ubuntu
           TARGET: /home/ubuntu/
