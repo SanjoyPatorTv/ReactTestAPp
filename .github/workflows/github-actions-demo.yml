@@ -23,7 +23,7 @@ jobs:
       - name: removing prev build directory from server
         uses: fifsky/ssh-action@v0.0.6
         with:
-          command: rm -rf build
+          command: rm -rf dist
           host: 13.127.183.100
           user: ubuntu
           key: ${{ secrets.AWS_MOTOR_PRIVATE }}
@@ -33,7 +33,7 @@ jobs:
         with:
           SSH_PRIVATE_KEY: ${{ secrets.AWS_MOTOR_PRIVATE }}
           ARGS: "-rltDzvO"
-          SOURCE: "${{ github.workspace }}/build"
+          SOURCE: "dist"
           REMOTE_HOST: 13.127.183.100
           REMOTE_USER: ubuntu
           TARGET: /home/ubuntu/
@@ -45,8 +45,8 @@ jobs:
           command: |
             rm -rf frontend_old
             mv frontend frontend_old
-            mv build frontend
-            mkdir build
+            mv dist frontend
+            mkdir dist
           host: 13.127.183.100
           user: ubuntu
           key: ${{ secrets.AWS_MOTOR_PRIVATE }}
